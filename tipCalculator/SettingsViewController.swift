@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UIPickerVie
 	var peoplePicker:UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+		// Do any additional setup after loading the view.
         self.title = "Settings"
 		//picker setup
 		
@@ -25,23 +26,19 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UIPickerVie
 		peoplePicker.delegate = self
 		
 		defaultPeopleField.inputView = peoplePicker
-//		numOfPeopleField.text = peoplePickerValues[0]
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+    // Saves the users selected preference for tip
     @IBAction func defaultTipSet(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().setInteger(defaultTipSegment.selectedSegmentIndex, forKey: "defaultTip")
         NSUserDefaults.standardUserDefaults()
     }
-	@IBAction func defaultPeopleSet(sender: AnyObject) {
-		
-	}
 	
     override func viewWillAppear(animated: Bool) {
         let defaultTip = NSUserDefaults.standardUserDefaults().integerForKey("defaultTip") ?? 0
@@ -64,7 +61,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UIPickerVie
 	func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String {
 		return peoplePickerValues[row]
 	}
-	
+
+	// Saves the users selected preference for number of people
 	func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
 		defaultPeopleField.text = peoplePickerValues[row]
 		self.view.endEditing(true)

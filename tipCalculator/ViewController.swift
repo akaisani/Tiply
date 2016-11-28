@@ -12,6 +12,7 @@ var lastAmount = ""
 var lastPeople = ""
 class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
+	// Initlizing variables and setting IBOutlets
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var selectedTipSegment: UISegmentedControl!
     
@@ -22,17 +23,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     @IBOutlet weak var calcView: UIView!
     @IBOutlet weak var totalLabel: UILabel!
 	let peoplePickerValues = ["1","2", "3", "4", "5", "6", "7", "8", "9", "10"]
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-		peoplePicker = UIPickerView()
 		
+		// Initial setup of UIPickerView
+		peoplePicker = UIPickerView()
 		peoplePicker.dataSource = self
 		peoplePicker.delegate = self
-		
 		numOfPeopleField.inputView = peoplePicker
 		numOfPeopleField.text = peoplePickerValues[0]
-
 		
     }
 
@@ -40,7 +41,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	// setting up view for animation and according to previously entered user data
     override func viewWillAppear(animated: Bool) {
 		self.calcView.alpha = 0
         let defaultTip = NSUserDefaults.standardUserDefaults().integerForKey("defaultTip") ?? 0
@@ -76,7 +78,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         self.view.endEditing(true);
     }
 
-
+	// This IBAction simply calculates the tip and updates all fields
     @IBAction func calculateTip(sender: AnyObject) {
         let amount:Double = Double(billField.text!) ?? 0
         let tipPercentages:[Double] = [0.10, 0.18, 0.2]
@@ -136,7 +138,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
 		return peoplePickerValues[row]
 	}
 	
-	func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int){
+	func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
 		numOfPeopleField.text = peoplePickerValues[row]
 		self.calculateTip(self)
 		self.view.endEditing(true)

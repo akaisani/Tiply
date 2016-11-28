@@ -24,11 +24,11 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough 
 
-Here's a walkthrough of implemented user stories:
-[Imgur](http://i.imgur.com/JLHQnXt.gifv)
-<img src='http://i.imgur.com/JLHQnXt.gif' title='Video Walkthrough' width='' alt= 'http://i.imgur.com/ltrkA0X.gif' />
+Here's a walkthrough of the features implemented in tiply:
 
-Link to gif [here](http://i.imgur.com/ltrkA0X.gif)
+<img src='tiply.gif' title='Video Walkthrough' width='' alt= 'http://i.imgur.com/ltrkA0X.gif' />
+
+Link to gif [here](tiply.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

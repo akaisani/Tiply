@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let formatedDate = dateFormatter.stringFromDate(currDate)
 		NSUserDefaults.standardUserDefaults().setObject(formatedDate, forKey: "lastDate")
 		NSUserDefaults.standardUserDefaults()
-		print("saving before exit")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
